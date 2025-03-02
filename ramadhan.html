@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ramadhan Kareem 🌙</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background: linear-gradient(to bottom, #87CEEB, #f8f9fa); /* Langit biru */
+            padding: 20px;
+        }
+        h1 {
+            color: #ffffff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        .container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 300px;
+        }
+        .envelope {
+            position: relative;
+            width: 300px;
+            height: 200px;
+            background-color: #3b9eff;
+            margin: auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+        .flap {
+            position: absolute;
+            width: 100%;
+            height: 60px;
+            background-color: #1e78d3;
+            top: 0;
+            clip-path: polygon(0% 100%, 50% 0%, 100% 100%);
+            transition: transform 0.8s ease-in-out;
+        }
+        .letter {
+            position: absolute;
+            width: 90%;
+            height: 140px;
+            background-color: white;
+            top: 100px;
+            left: 5%;
+            border-radius: 5px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            transition: top 1s ease-in-out;
+        }
+        .envelope:hover .letter {
+            top: -30px;
+        }
+        .envelope:hover .flap {
+            transform: rotateX(180deg);
+        }
+        .hand {
+            position: absolute;
+            width: 50px;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: wave 2s infinite alternate;
+        }
+        @keyframes wave {
+            from { transform: translateX(-50%) rotate(0deg); }
+            to { transform: translateX(-50%) rotate(10deg); }
+        }
+        .message {
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+            padding: 5px;
+        }
+        .message-arab {
+            font-size: 18px;
+            font-weight: bold;
+            color: #28a745;
+        }
+        .button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        .button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <h1>🌙 Ramadhan Kareem! 🌙</h1>
+    <div class="container">
+        <div class="envelope">
+            <div class="flap"></div>
+            <div class="letter" id="letter">
+                <p class="message-arab" id="message-arab">رمضان كريم</p>
+                <p class="message" id="message">Semangat puasanya ya! Jangan lupa sahur biar kuat seharian 💪</p>
+                <button class="button" onclick="changeMessage()">Ganti Pesan</button>
+            </div>
+        </div>
+        <img class="hand" src="https://i.imgur.com/O3RfpFS.png" alt="Hand">
+    </div>
+
+    <script>
+        const messages = [
+            { arab: "رمضان كريم", ind: "Semangat puasanya ya! Jangan lupa sahur biar kuat seharian 💪" },
+            { arab: "صوما مقبولا و افطارا شهيا", ind: "Semoga puasamu diterima dan buka puasamu berkah! 🍽️" },
+            { arab: "لا تنظر الى الساعة كثيرًا 😂", ind: "Jangan sering lihat jam, nanti makin laper wkwk 😂" },
+            { arab: "الصبر جميل", ind: "Bentar lagi buka! Sabar dikit lagi yaaa 😆" },
+            { arab: "🌟حافظ على عبادتك🌟", ind: "Yang penting ibadahnya full, puasanya jangan bolong-bolong 😇" },
+            { arab: "باقي القليل على المغرب", ind: "🔥 Tetap strong sampai Maghrib! 🔥" }
+        ];
+
+        function changeMessage() {
+            let randomIndex = Math.floor(Math.random() * messages.length);
+            document.getElementById("message-arab").innerText = messages[randomIndex].arab;
+            document.getElementById("message").innerText = messages[randomIndex].ind;
+        }
+    </script>
+</body>
+</html>
